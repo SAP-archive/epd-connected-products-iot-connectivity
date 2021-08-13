@@ -1,13 +1,14 @@
 # SAP EPD Connected Products IoT Device Connectivity Support
 
 ## Description
-This repository contains sample postman collection and environment files in the folder: Generic_postman_env_collection that would allow a user to download the IoT device certificate. This device certificate is allowed for setting up the data ingestion for an equipment.
+This repository contains sample postman collection and environment files in the folder: `Generic_postman_env_collection` that would allow a user to download the IoT device certificate. This device certificate is allowed for setting up the data ingestion for an equipment.
 
-In addition, it also contains an example python script:data_ingestion_example.py that shows how can one use the downloaded device certificate and use it to ingest the data to IoT.
+In addition, it also contains an example python script: `data_ingestion_example.py` that shows how can one use the downloaded device certificate and use it to ingest the data to IoT.
 
 ## Requirements
 
-[Python](https://www.python.org/) and [Postman](https://www.postman.com/downloads/)
+* [Python](https://www.python.org/)
+* [Postman](https://www.postman.com/downloads/)
 
 ## Download and Installation
 

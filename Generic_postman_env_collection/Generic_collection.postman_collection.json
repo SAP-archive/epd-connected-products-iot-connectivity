@@ -1,0 +1,166 @@
+{
+	"info": {
+		"_postman_id": "8f984bb4-057d-47df-be64-82f7d238cd63",
+		"name": "Public_Postman_certificate",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Fetch token",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = JSON.parse(responseBody);\r",
+							"postman.setEnvironmentVariable(\"consumerJwtToken\", \"Bearer \" + data.access_token);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "client_credentials",
+							"type": "text"
+						},
+						{
+							"key": "response_type",
+							"value": "token",
+							"type": "text"
+						},
+						{
+							"key": "client_id",
+							"value": "{{client_id}}",
+							"type": "text"
+						},
+						{
+							"key": "client_secret",
+							"value": "{{client_secret}}",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://{{identity-zone}}.authentication.{{landscape}}.hana.ondemand.com/oauth/token",
+					"protocol": "https",
+					"host": [
+						"{{identity-zone}}",
+						"authentication",
+						"{{landscape}}",
+						"hana",
+						"ondemand",
+						"com"
+					],
+					"path": [
+						"oauth",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get DeviceID",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = JSON.parse(responseBody);\r",
+							"postman.setEnvironmentVariable(\"deviceId\", data[0].id);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{consumerJwtToken}}",
+						"type": "text"
+					},
+					{
+						"key": "",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "https://iot-device-connectivity-noah-live.cfapps.{{landscape}}.hana.ondemand.com/api/v1/devices?filter=alternateId eq '{{equipmentId}}'",
+					"protocol": "https",
+					"host": [
+						"iot-device-connectivity-noah-live",
+						"cfapps",
+						"{{landscape}}",
+						"hana",
+						"ondemand",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"devices"
+					],
+					"query": [
+						{
+							"key": "filter",
+							"value": "alternateId eq '{{equipmentId}}'"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get certificate",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{consumerJwtToken}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://iot-device-connectivity-noah-live.cfapps.{{landscape}}.hana.ondemand.com/api/v1/devices/{{deviceId}}/authentications/clientCertificate/pem",
+					"protocol": "https",
+					"host": [
+						"iot-device-connectivity-noah-live",
+						"cfapps",
+						"{{landscape}}",
+						"hana",
+						"ondemand",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"devices",
+						"{{deviceId}}",
+						"authentications",
+						"clientCertificate",
+						"pem"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

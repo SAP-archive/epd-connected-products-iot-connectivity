@@ -99,6 +99,7 @@ qos = 2
 LOGGER.debug(f"Connecting to {host} port: {str(port)}, keepalive {keepalive}")
 mqttc.connect(host, port, keepalive)
 
+# ssl.create_default_context() currently not supported by IoT, hence instantiating with explicit version
 protocol = ssl.PROTOCOL_TLSv1_2
 ssl_context = ssl.SSLContext(protocol)
 ssl_context.load_cert_chain(certfile, password=certfilePassword)

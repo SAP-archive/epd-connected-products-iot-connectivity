@@ -99,7 +99,9 @@ qos = 2
 LOGGER.debug(f"Connecting to {host} port: {str(port)}, keepalive {keepalive}")
 mqttc.connect(host, port, keepalive)
 
-ssl_context = ssl.create_default_context()
+# SAP IoT currently only supports TLS v1.2, hence ssl.create_default_context() does not work
+protocol = ssl.PROTOCOL_TLSv1_2
+ssl_context = ssl.SSLContext(protocol)
 ssl_context.load_cert_chain(certfile, password=certfilePassword)
 mqttc.tls_set_context(ssl_context)
 

@@ -1,6 +1,7 @@
 # SAP EPD Connected Products IoT Device Connectivity Support
 
 [![REUSE status](https://api.reuse.software/badge/github.com/SAP-samples/epd-connected-products-iot-connectivity)](https://api.reuse.software/info/github.com/SAP-samples/epd-connected-products-iot-connectivity)
+[![Not Maintained](https://img.shields.io/badge/Maintenance%20Level-Not%20Maintained-yellow.svg)](https://gist.github.com/cheerfulstoic/d107229326a01ff0f333a1d3476e068d)
 ## Description
 This repository contains sample postman collection and environment files in the folder: `Generic_postman_env_collection` that would allow a user to download the IoT device certificate. This device certificate is allowed for setting up the data ingestion for an equipment.
 
